@@ -22,24 +22,6 @@ group :openid do
   gem "ruby-openid", '~> 2.1.4', :require => 'openid'
 end
 
-group :rmagick do
-  gem "rmagick", ">= 1.15.17"
-  # Older distributions might not have a sufficiently new ImageMagick version
-  # for the current rmagick release (current rmagick is rmagick 2, which
-  # requires ImageMagick 6.4.9 or later). If this is the case for you, comment
-  # the line above this comment block and uncomment the one underneath it to
-  # get an rmagick version known to work on older distributions.
-  #
-  # The following distributíons are known to *not* ship with a usable
-  # ImageMagick version. There might be additional ones.
-  #   * Ubuntu 9.10 and older
-  #   * Debian Lenny 5.0 and older
-  #   * CentOS 5 and older
-  #   * RedHat 5 and older
-  #
-  #gem "rmagick", "< 2.0.0"
-end
-
 # Use the commented pure ruby gems, if you have not the needed prerequisites on
 # board to compile the native ones.  Note, that their use is discouraged, since
 # their integration is propbably not that well tested and their are slower in
@@ -55,6 +37,25 @@ platforms :mri, :mingw do
     gem "pg", "~> 0.9.0"
     #   gem "postgres-pr"
   end
+
+  group :rmagick do
+    gem "rmagick", ">= 1.15.17"
+    # Older distributions might not have a sufficiently new ImageMagick version
+    # => for the current rmagick release (current rmagick is rmagick 2, which
+    # requires ImageMagick 6.4.9 or later). If this is the case for you, comment
+    # the line above this comment block and uncomment the one underneath it to
+    # get an rmagick version known to work on older distributions.
+    #
+    # The following distributíons are known to *not* ship with a usable
+    # ImageMagick version. There might be additional ones.
+    #   * Ubuntu 9.10 and older
+    #   * Debian Lenny 5.0 and older
+    #   * CentOS 5 and older
+    #   * RedHat 5 and older
+    #
+    #gem "rmagick", "< 2.0.0"
+  end
+
 end
 
 platforms :mri_18, :mingw_18 do
@@ -87,6 +88,10 @@ platforms :jruby do
 
   group :sqlite do
     gem "activerecord-jdbcsqlite3-adapter"
+  end
+
+  group :rmagick do
+    gem "rmagick4j"
   end
 end
 
